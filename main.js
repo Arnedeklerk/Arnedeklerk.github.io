@@ -1,26 +1,38 @@
 const noteContainer = document.getElementById("note-container");
-const addNoteBtn = document.getElementById("add-note-btn");
+const addNoteForm = document.getElementById("add-note-form");
 
 let notes = [];
 
-function addNote() {
-  const note = prompt("Enter your note:");
-  const newNote = {
-    id: Date.now(),
-    text: note
-  };
-  notes.push(newNote);
-  renderNotes();
+function addNote(e) {
+    e.preventDefault();
+    const note = document.getElementById("note-input").value;
+    if(note){
+        const newNote = {
+            id: Date.now(),
+            text: note
+        };
+        notes.push(newNote);
+        renderNotes();
+        addNoteForm.reset();
+    }
+}
+
+function deleteNote(noteId){
+    notes = notes.filter(note => note.id !== noteId);
+    renderNotes();
 }
 
 function renderNotes() {
-  noteContainer.innerHTML = "";
-  notes.forEach(note => {
-    const noteEl = document.createElement("div");
-    noteEl.classList.add("note");
-    noteEl.innerHTML = note.text;
-    noteContainer.appendChild(noteEl);
-  });
+    noteContainer.innerHTML = "";
+    notes.forEach(note => {
+        const noteEl = document.createElement("div");
+        noteEl.classList.add("note");
+        noteEl.innerHTML = `
+            <div> ${note.text} </div>
+            <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+        `;
+        noteContainer.appendChild(noteEl);
+    });
 }
 
-addNoteBtn.addEventListener("click", addNote);
+addNoteForm.addEventListener("submit", addNote);
