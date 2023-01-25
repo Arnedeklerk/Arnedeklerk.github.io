@@ -1,23 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
 #note-container {
-  margin: 20px 0;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
 .note {
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 10px; /* reduce the padding */
+  margin-bottom: 10px; /* reduce the margin-bottom */
   border: 1px solid #ccc;
-}
-
-#add-note-btn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
 
 .note-btns {
@@ -26,4 +30,19 @@ body {
 
 .note:hover .note-btns {
   display: block;
+}
+
+.date-added {
+  font-size: 12px;
+  color: red;
+}
+
+.add-note-btn {
+  padding: 20px 40px; /* increase the padding */
+  font-size: 20px; /* increase the font size */
+  border-radius: 10px; /* increase the border radius */
+  background-color: green; /* change the background color */
+  color: white;
+  border: none;
+  cursor: pointer;
 }
