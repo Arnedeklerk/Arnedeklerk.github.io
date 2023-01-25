@@ -9,7 +9,8 @@ function addNote(e) {
     if(note){
         const newNote = {
             id: Date.now(),
-            text: note
+            text: note,
+            completed: false
         };
         notes.push(newNote);
         renderNotes();
@@ -17,8 +18,23 @@ function addNote(e) {
     }
 }
 
+function editNote(noteId){
+    const note = notes.find(n => n.id === noteId);
+    const updatedNote = prompt("Edit Note:", note.text);
+    if (updatedNote) {
+        note.text = updatedNote;
+        renderNotes();
+    }
+}
+
 function deleteNote(noteId){
     notes = notes.filter(note => note.id !== noteId);
+    renderNotes();
+}
+
+function toggleCompleted(noteId){
+    const note = notes.find(n => n.id === noteId);
+    note.completed = !note.completed;
     renderNotes();
 }
 
@@ -28,8 +44,14 @@ function renderNotes() {
         const noteEl = document.createElement("div");
         noteEl.classList.add("note");
         noteEl.innerHTML = `
-            <div> ${note.text} </div>
-            <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+            <div> 
+                <input type="checkbox" id="note-${note.id}" ${note.completed ? "checked" : ""} onchange="toggleCompleted(${note.id})"/>
+                <label for="note-${note.id}" ${note.completed ? "style='text-decoration: line-through;'" : ""}>${note.text}</label>
+            </div>
+            <div class="note-btns">
+                <button class="edit-btn" onclick="editNote(${note.id})">Edit</button>
+                <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+            </div>
         `;
         noteContainer.appendChild(noteEl);
     });

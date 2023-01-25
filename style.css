@@ -19,3 +19,11 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.note-btns {
+  display: none;
+}
+
+.note:hover .note-btns {
+  display: block;
+}
