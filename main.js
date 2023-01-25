@@ -39,22 +39,28 @@ function toggleCompleted(noteId){
 }
 
 function renderNotes() {
-    noteContainer.innerHTML = "";
-    notes.forEach(note => {
-        const noteEl = document.createElement("div");
-        noteEl.classList.add("note");
-        noteEl.innerHTML = `
-            <div> 
-                <input type="checkbox" id="note-${note.id}" ${note.completed ? "checked" : ""} onchange="toggleCompleted(${note.id})"/>
-                <label for="note-${note.id}" ${note.completed ? "style='text-decoration: line-through;'" : ""}>${note.text}</label>
-            </div>
-            <div class="note-btns">
-                <button class="edit-btn" onclick="editNote(${note.id})">Edit</button>
-                <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
-            </div>
-        `;
-        noteContainer.appendChild(noteEl);
-    });
+  noteContainer.innerHTML = "";
+  notes.sort(function(a, b) {
+  return a.completed - b.completed;
+  });
+  noteContainer.innerHTML = "";
+  notes.forEach(note => {
+      const noteEl = document.createElement("div");
+      noteEl.classList.add("note");
+      const dateAdded = new Date().toLocaleString();
+      noteEl.innerHTML = `
+          <div> 
+              <input type="checkbox" id="note-${note.id}" ${note.completed ? "checked" : ""} onchange="toggleCompleted(${note.id})"/>
+              <label for="note-${note.id}" ${note.completed ? "style='text-decoration: line-through;'" : ""}>${note.text}</label>
+              <span class="date-added">Added on: ${dateAdded}</span>
+          </div>
+          <div class="note-btns">
+              <button class="edit-btn" onclick="editNote(${note.id})">Edit</button>
+              <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+          </div>
+      `;
+      noteContainer.appendChild(noteEl);
+  });
 }
 
 addNoteForm.addEventListener("submit", addNote);
