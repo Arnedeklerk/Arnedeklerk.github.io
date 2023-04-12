@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Arne's Notes</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <h1>Arne's note taking app</h1>
-    <div id="note-container"></div>
-    <form id="add-note-form">
-        <textarea id="note-input" placeholder="Enter your note"></textarea>
-        <button type="submit">Add Note</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnetMiner Pricing Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="calculator.js"></script>
+</head>
+<body>
+    <h1>KnetMiner Pricing Calculator</h1>
+    <form id="pricing-calculator" onsubmit="return calculatePrice()">
+
+        <h2>0. Select User Type</h2>
+        <select id="user-type-select">
+            <option value="commercial">Commercial</option>
+            <option value="academic">Academic</option>
+        </select>
+
+        <h2>1. Select Resources (Bundled lists of species)</h2>
+        <div id="resource-selection">
+            <!-- Searchable dropdown or list with checkboxes will be implemented in the script -->
+        </div>
+    
+        <h2>2. Select Number of Seats</h2>
+        <input type="range" id="seat-slider" min="1" max="5" value="1" oninput="updateSeatSliderLabel()">
+        <label id="seat-slider-label">1 seat - 0% discount</label>
+    
+        <h2>3. Select Subscription Duration</h2>
+        <select id="duration-select">
+            <option value="1">1 month (recurring) - 0% discount</option>
+            <option value="3">3 months (recurring) - 5% discount</option>
+            <option value="6">6 months (recurring) - 10% discount</option>
+            <option value="12">12 months (recurring) - 15% discount</option>
+        </select>
+    
+        <h2>4. Price Summary</h2>
+        <ul>
+            <li>Resources: <span id="summary-resources">Wheat, Arabidopsis</span></li>
+            <li>Number of seats: <span id="summary-seats">2</span></li>
+            <li>Subscription duration: <span id="summary-duration">3 months</span></li>
+            <li>Original price: <span id="summary-original-price">150 pounds</span></li>
+            <li>Resource discount: <span id="summary-resource-discount">10 pounds</span></li>
+            <li>Seat discount: <span id="summary-seat-discount">5 pounds</span></li>
+            <li>Duration discount: <span id="summary-duration-discount">7.5 pounds</span></li>
+            <li>Total discount: <span id="summary-total-discount">22.5 pounds</span></li>
+            <li>Total price: <span id="summary-total-price">127.5 pounds per month</span></li>
+        </ul>
+    
+        <button type="submit">Proceed to Checkout</button>
+        <h3>Here can go some stats about the KGs you've selected...</h3>
+
     </form>
-    <script src="main.js"></script>
-  </body>
-</html>
+    
+</body>
+</html>    

@@ -1,48 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-#note-container {
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
 }
 
 h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+  background-color: #1e90ff;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
 }
 
-.note {
-  padding: 10px; /* reduce the padding */
-  margin-bottom: 10px; /* reduce the margin-bottom */
-  border: 1px solid #ccc;
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.note-btns {
-  display: none;
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }
 
-.note:hover .note-btns {
-  display: block;
+label {
+  font-size: 1em;
+  margin-left: 5px;
+  margin-right: 15px;
 }
 
-.date-added {
-  font-size: 12px;
-  color: red;
+input[type="range"] {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.add-note-btn {
-  padding: 20px 40px; /* increase the padding */
-  font-size: 20px; /* increase the font size */
-  border-radius: 10px; /* increase the border radius */
-  background-color: green; /* change the background color */
-  color: white;
+select {
+  width: 100%;
+  padding: 5px;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  color: #fff;
   border: none;
   cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #3399ff;
 }
